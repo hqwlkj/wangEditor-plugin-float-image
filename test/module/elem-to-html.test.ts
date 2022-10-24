@@ -1,39 +1,38 @@
 /**
  * @description elem-to-html test
- * @author wangfupeng
+ * @author Yanghc
  */
 
 import elemToHtmlConf from '../../src/module/elem-to-html'
-import { LinkCardElement } from '../../src/index'
+import { ImageElement } from '../../src'
 
-describe('link-card elem-to-html', () => {
-  const title = '百度新闻'
-  const link = 'http://news.baidu.com/'
-  const iconImgSrc = 'https://news-bos.cdn.bcebos.com/mvideo/log-news.png'
-  const linkCard: LinkCardElement = {
-    type: 'link-card',
-    title,
-    link,
-    iconImgSrc,
+describe('float-image elem-to-html', () => {
+  const imgSrc = 'https://www.wangeditor.com/imgs/logo.png'
+  const linkCard: ImageElement = {
+    type: 'image',
+    src: imgSrc,
     children: [{ text: '' }],
   }
 
   it('type', () => {
-    expect(elemToHtmlConf.type).toBe('link-card')
+    expect(elemToHtmlConf.type).toBe('image')
   })
 
   it('elem to html', () => {
-    const html = elemToHtmlConf.elemToHtml(linkCard, '')
+    const src = 'https://www.wangeditor.com/imgs/logo.png'
+    const href = 'https://www.wangeditor.com/'
+    const elem = {
+      type: 'image',
+      src,
+      alt: 'logo',
+      href,
+      style: { width: '100', height: '80', float: 'none' },
+      children: [{ text: '' }], // void node 必须包含一个空 text
+    }
+    const html = elemToHtmlConf.elemToHtml(elem, '')
+
     expect(html).toBe(
-      `<div data-w-e-type="link-card" data-w-e-is-void data-title="${title}" data-link="${link}" data-iconImgSrc="${iconImgSrc}">
-    <div class="info-container">
-      <div class="title-container"><p>${title}</p></div>
-      <div class="link-container"><span>${link}</span></div>
-    </div>
-    <div class="icon-container">
-      <img src="${iconImgSrc}"/>
-    </div>
-  </div>`
+      `<img src="${src}" alt="logo" data-href="${href}" style="width:'100'; height:'80'; float:none"/>`
     )
   })
 })

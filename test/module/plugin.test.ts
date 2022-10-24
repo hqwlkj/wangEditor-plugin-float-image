@@ -1,31 +1,20 @@
 /**
  * @description plugin test
- * @author wangfupeng
+ * @author Yanghc
  */
 
-import { DomEditor } from '@wangeditor/editor'
 import createEditor from '../utils/create-editor'
-import withLinkCard from '../../src/module/plugin'
-import { LinkCardElement } from '../../src/index'
+import withImage from '../../src/module/plugin'
 
-describe('link-card plugin', () => {
-  const editor = withLinkCard(createEditor())
-  const linkCard: LinkCardElement = {
-    type: 'link-card',
-    title: 'aaa',
-    link: 'bbb',
-    iconImgSrc: 'ccc',
-    children: [{ text: '' }],
-  }
+describe('float-image plugin', () => {
+  const editor = withImage(createEditor())
+  const elem = { type: 'image', children: [{ text: '' }] }
 
-  it('isVoid', () => {
-    expect(editor.isVoid(linkCard)).toBe(true)
+  it('image is inline', () => {
+    expect(editor.isInline(elem)).toBeTruthy()
   })
 
-  it('如果 link-card 是 editor 最后一个 elem，会追加一个 paragraph', () => {
-    editor.insertNode(linkCard)
-    const elemLength = editor.children.length
-    const lastElem = editor.children[elemLength - 1]
-    expect(DomEditor.getNodeType(lastElem)).toBe('paragraph')
+  it('image is void', () => {
+    expect(editor.isVoid(elem)).toBeTruthy()
   })
 })

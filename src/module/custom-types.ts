@@ -3,23 +3,23 @@
  * @author Yanghc
  */
 
-import { SlateText } from '@wangeditor/editor'
-
+//【注意】需要把自定义的 Element 引入到最外层的 custom-types.d.ts
 type EmptyText = {
   text: ''
 }
-export type LinkCardElement = {
-  type: 'link-card'
-  title: string
-  link: string
-  iconImgSrc?: string
-  children: EmptyText[] // void 元素必须有一个空 text
+
+export type ImageStyle = {
+  width?: string
+  height?: string
+  float?: string
 }
 
 // wangEditor 内部的 image elem
-export type LinkElement = {
+export type ImageElement = {
   type: 'image'
-  url: string
-  target?: string
-  children: SlateText[]
+  src: string
+  alt?: string
+  href?: string
+  style?: ImageStyle
+  children: EmptyText[] // void 元素必须有一个空 text
 }

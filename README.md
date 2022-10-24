@@ -74,3 +74,7 @@ const editorConfig: Partial<IEditorConfig> = {
 
 支持 i18n 多语言
 
+
+## 许可证
+
+[MIT](https://github.com/hqwlkj/wangEditor-plugin-float-image/blob/master/LICENSE)

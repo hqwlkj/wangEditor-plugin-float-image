@@ -1,23 +1,23 @@
 /**
  * @description module entry
- * @author wangfupeng
+ * @author Yanghc
  */
 
 import './local' // 多语言
 
-import { IModuleConf } from '@wangeditor/editor'
-import withLinkCard from './plugin'
-import renderElemConf from './render-elem'
+import {IModuleConf} from '@wangeditor/editor'
+import withImage from './plugin'
+import {renderImageConf} from './render-elem'
 import elemToHtmlConf from './elem-to-html'
-import parseHtmlConf from './parse-elem-html'
-import { convertToLinkCardMenuConf } from './menu/index'
+import {parseHtmlConf} from './parse-elem-html'
+import {imageFloatLeftMenuConf, imageFloatRightMenuConf, imageFloatNoneMenuConf} from './menu'
 
 const module: Partial<IModuleConf> = {
-  editorPlugin: withLinkCard,
-  renderElems: [renderElemConf],
+  editorPlugin: withImage,
+  renderElems: [renderImageConf],
   elemsToHtml: [elemToHtmlConf],
   parseElemsHtml: [parseHtmlConf],
-  menus: [convertToLinkCardMenuConf],
+  menus: [imageFloatLeftMenuConf, imageFloatRightMenuConf, imageFloatNoneMenuConf],
 }
 
 export default module

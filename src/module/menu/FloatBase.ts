@@ -3,8 +3,7 @@
  * @author Yanghc
  */
 
-import { Transforms, Node } from 'slate'
-import { IButtonMenu, IDomEditor, DomEditor } from '@wangeditor/core'
+import { IButtonMenu, IDomEditor, DomEditor, SlateTransforms, SlateNode } from '@wangeditor/editor'
 import { ImageElement } from '../custom-types'
 
 abstract class ImageFloatBaseClass implements IButtonMenu {
@@ -23,7 +22,7 @@ abstract class ImageFloatBaseClass implements IButtonMenu {
     return false
   }
 
-  private getSelectedNode(editor: IDomEditor): Node | null {
+  private getSelectedNode(editor: IDomEditor): SlateNode | null {
     return DomEditor.getSelectedNodeByType(editor, 'image')
   }
 
@@ -48,11 +47,11 @@ abstract class ImageFloatBaseClass implements IButtonMenu {
     const props: Partial<ImageElement> = {
       style: {
         ...style,
-        float: this.value, // 修改 float
+        float: this.value, // 修改 float 的值
       },
     }
 
-    Transforms.setNodes(editor, props, {
+    SlateTransforms.setNodes(editor, props, {
       match: n => DomEditor.checkNodeType(n, 'image'),
     })
   }

@@ -1,30 +1,26 @@
 /**
  * @description elem to html
- * @author wangfupeng
+ * @author Yanghc
  */
 
 import { SlateElement } from '@wangeditor/editor'
-import { LinkCardElement } from './custom-types'
+import { ImageElement } from './custom-types'
 
 // 生成 html 的函数
-function linkCardToHtml(elem: SlateElement, childrenHtml: string): string {
-  const { title = '', link = '', iconImgSrc = '' } = elem as LinkCardElement
-  const html = `<div data-w-e-type="link-card" data-w-e-is-void data-title="${title}" data-link="${link}" data-iconImgSrc="${iconImgSrc}">
-    <div class="info-container">
-      <div class="title-container"><p>${title}</p></div>
-      <div class="link-container"><span>${link}</span></div>
-    </div>
-    <div class="icon-container">
-      <img src="${iconImgSrc}"/>
-    </div>
-  </div>`
-  return html
+function imageToHtml(elem: SlateElement, childrenHtml: string): string {
+  const { src, alt = '', href = '', style = {} } = elem as ImageElement
+  const { width = '', height = '', float = '' } = style
+  let styleStr = ''
+  if (width) styleStr += `width: ${width};`
+  if (height) styleStr += `height: ${height};`
+  if (float) styleStr += `float: ${float};`
+  return `<img src="${src}" alt="${alt}" data-href="${href}" style="${styleStr}"/>`
 }
 
 // 配置
 const conf = {
-  type: 'link-card', // 节点 type ，重要！！！
-  elemToHtml: linkCardToHtml,
+  type: 'image', // 节点 type ，重要！！！
+  elemToHtml: imageToHtml,
 }
 
 export default conf

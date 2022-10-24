@@ -1,32 +1,32 @@
 /**
  * @description parse elem html
- * @author wangfupeng
+ * @author Yanghc
  */
 
 import { DOMElement } from '../utils/dom'
 import { IDomEditor, SlateDescendant, SlateElement } from '@wangeditor/editor'
-import { LinkCardElement } from './custom-types'
+import { ImageElement } from './custom-types'
 
-function parseHtml(
-  elem: DOMElement,
-  children: SlateDescendant[],
-  editor: IDomEditor
-): SlateElement {
-  const link = elem.getAttribute('data-link') || ''
-  const title = elem.getAttribute('data-title') || ''
-  const iconImgSrc = elem.getAttribute('data-iconImgSrc') || ''
+
+function parseHtml(elem: DOMElement, children: SlateDescendant[], editor: IDomEditor): ImageElement {
+  let href = elem.getAttribute('data-href') || ''
+  href = decodeURIComponent(href) // 兼容 V4
+
   return {
-    type: 'link-card',
-    link,
-    title,
-    iconImgSrc,
-    children: [{ text: '' }], // void node 必须有一个空白 text
-  } as LinkCardElement
+    type: 'image',
+    src: elem.getAttribute('src') || '',
+    alt: elem.getAttribute('alt') || '',
+    href,
+    style: {
+      width: elem.getAttribute('width') || '',
+      height: elem.getAttribute('height') || '',
+      float: elem.getAttribute('float') || '',
+    },
+    children: [{ text: '' }], // void node 有一个空白 text
+  }
 }
 
-const parseHtmlConf = {
-  selector: 'div[data-w-e-type="link-card"]',
+export const parseHtmlConf = {
+  selector: 'img:not([data-w-e-type])', // data-w-e-type 属性，留给自定义元素，保证扩展性
   parseElemHtml: parseHtml,
 }
-
-export default parseHtmlConf

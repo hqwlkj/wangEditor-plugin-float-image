@@ -3,14 +3,7 @@
  * @author Yanghc
  */
 
-import {
-  IDomEditor,
-  createEditor,
-  createToolbar,
-  Boot,
-  IEditorConfig,
-  i18nChangeLanguage,
-} from '@wangeditor/editor'
+import {Boot, createEditor, createToolbar, IDomEditor, IEditorConfig,} from '@wangeditor/editor'
 import module from '../src/index'
 
 // 注册
@@ -20,16 +13,20 @@ Boot.registerModule(module)
 
 // 编辑器配置
 const editorConfig: Partial<IEditorConfig> = {
+  MENU_CONF: {
+    uploadImage: {
+      fieldName: 'your-fileName',
+      base64LimitSize: 10 * 1024 * 1024 // 10M 以下插入 base64
+    }
+  },
   onChange(editor: IDomEditor) {
-    const html = editor.getHtml()
     // @ts-ignore
-    document.getElementById('text-html').value = html
-    const contentStr = JSON.stringify(editor.children, null, 2)
+    document.getElementById('text-html').value = editor.getHtml()
     // @ts-ignore
-    document.getElementById('text-json').value = contentStr
+    document.getElementById('text-json').value = JSON.stringify(editor.children, null, 2)
   },
   hoverbarKeys: {
-    link: {
+    image: {
       menuKeys: [
         'imageWidth30',
         'imageWidth50',
@@ -47,37 +44,15 @@ const editorConfig: Partial<IEditorConfig> = {
   },
 }
 
-const floatImageHtml = `<div data-w-e-type="link-card" data-w-e-is-void data-title="百度新闻" data-link="http://news.baidu.com/" data-iconImgSrc="https://news-bos.cdn.bcebos.com/mvideo/log-news.png">
-  <div class="info-container">
-    <div class="title-container"><p>百度新闻</p></div>
-    <div class="link-container"><span>http://news.baidu.com/</span></div>
-  </div>
-  <div class="icon-container">
-    <img src="https://news-bos.cdn.bcebos.com/mvideo/log-news.png"/>
-  </div>
-</div>`
+const floatImageHtml = `<p>
+<img src="https://news-bos.cdn.bcebos.com/mvideo/log-news.png" alt="alt" data-href="https://news-bos.cdn.bcebos.com/mvideo/log-news.png"/>
+</p>`
 
 // 创建编辑器
 const editor = createEditor({
   selector: '#editor-container',
   config: editorConfig,
-  // content: [
-  //   {
-  //     // @ts-ignore
-  //     type: 'paragraph',
-  //     children: [{ text: 'hello world' }],
-  //   },
-  //   {
-  //     // @ts-ignore
-  //     type: 'link-card',
-  //     title: '网页标题网页标题网页标题',
-  //     link: 'https://zhuanlan.zhihu.com/',
-  //     iconImgSrc: '',
-  //     children: [{ text: '' }],
-  //   },
-  // ],
   html: `<p>hello&nbsp;world</p>${floatImageHtml}`,
-  // html: `<p>hello&nbsp;<a href="http://news.baidu.com/" target="_blank">百度新闻</a>&nbsp;world</p>`,
 })
 const toolbar = createToolbar({
   editor,

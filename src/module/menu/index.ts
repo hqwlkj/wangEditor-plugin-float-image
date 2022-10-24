@@ -3,16 +3,27 @@
  * @author Yanghc
  */
 
-import ConvertToLinkCard from './ConvertToLinkCard'
-import { genConvertToLinkCardConfig } from './config'
+import ImageFloatNone from './FloatNone'
+import ImageFloatLeft from './FloatLeft'
+import ImageFloatRight from './FloatRight'
 
-export const floatImageMenuConf = {
-  key: 'convertToLinkCard',
+export const imageFloatNoneMenuConf = {
+  key: 'imageFloatNone',
   factory() {
-    return new ConvertToLinkCard()
+    return new ImageFloatNone()
   },
+}
 
-  // 默认的菜单菜单配置，将存储在 editorConfig.MENU_CONF[key] 中
-  // 创建编辑器时，可通过 editorConfig.MENU_CONF[key] = {...} 来修改
-  config: genConvertToLinkCardConfig(),
+export const imageFloatLeftMenuConf = {
+  key: 'imageFloatLeft',
+  factory() {
+    return new ImageFloatLeft()
+  },
+}
+
+export const imageFloatRightMenuConf = {
+  key: 'imageFloatRight',
+  factory() {
+    return new ImageFloatRight()
+  },
 }

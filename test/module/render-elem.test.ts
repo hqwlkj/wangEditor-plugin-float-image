@@ -3,38 +3,50 @@
  * @author wangfupeng
  */
 
+import { Editor } from 'slate'
 import createEditor from '../utils/create-editor'
-import renderElemConf from '../../src/module/render-elem'
-import { LinkCardElement } from '../../src/index'
+import {renderImageConf} from '../../src/module/render-elem'
 
-describe('link-card render-elem', () => {
-  const editor = createEditor()
-  const linkCard: LinkCardElement = {
-    type: 'link-card',
-    title: 'aaa',
-    link: 'bbb',
-    iconImgSrc: 'ccc',
-    children: [{ text: '' }],
-  }
+describe('float-image render-elem', () => {
+  let editor: any
+  let startLocation: any
 
-  it('type', () => {
-    expect(renderElemConf.type).toBe('link-card')
+  beforeEach(() => {
+    editor = createEditor()
+    startLocation = Editor.start(editor, [])
   })
 
-  it('render elem', () => {
-    const vnode = renderElemConf.renderElem(linkCard, null, editor) as any
-    expect(vnode.sel).toBe('div')
-    expect(vnode.data.props.contentEditable).toBe(false)
+  afterEach(() => {
+    editor.clear()
+    editor.destroy()
+    editor = null
+    startLocation = null
+  })
 
-    const textContainerVnode = vnode.children[0]
-    const titleVnode = textContainerVnode.children[0]
-    expect(titleVnode.text).toBe('aaa')
+  it('render image - unselected image', () => {
+    expect(renderImageConf.type).toBe('image')
 
-    const linkVnode = textContainerVnode.children[1]
-    expect(linkVnode.text).toBe('bbb')
+    const src = 'https://www.wangeditor.com/imgs/logo.png'
+    const href = 'https://www.wangeditor.com/'
+    const elem = {
+      type: 'image',
+      src,
+      alt: 'logo',
+      href,
+      style: { width: '100', height: '80', float: 'none' },
+      children: [{ text: '' }], // void node 必须包含一个空 text
+    }
 
-    const iconContainerVnode = vnode.children[1]
-    const imgVnode = iconContainerVnode.children[0]
-    expect(imgVnode.data.props.src).toBe('ccc')
+    const containerVnode = renderImageConf.renderElem(elem, null, editor) as any
+    expect(containerVnode.sel).toBe('div')
+    expect(containerVnode.data.className).toBe('w-e-image-container')
+    expect(containerVnode.data.style.width).toBe('100')
+    expect(containerVnode.data.style.height).toBe('80')
+    expect(containerVnode.data.style.float).toBe('none')
+
+    const imageVnode = containerVnode.children[0] as any
+    expect(imageVnode.sel).toBe('img')
+    expect(imageVnode.data.src).toBe(src)
+    expect(imageVnode.data['data-href']).toBe(href)
   })
 })

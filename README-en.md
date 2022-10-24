@@ -74,3 +74,8 @@ You will get a float-image HTML format like this
 ## Others
 
 Support i18n.
+
+
+## LICENSE
+
+[MIT](https://github.com/hqwlkj/wangEditor-plugin-float-image/blob/master/LICENSE)

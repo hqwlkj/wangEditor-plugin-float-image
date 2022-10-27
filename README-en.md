@@ -12,7 +12,7 @@
 ## Installation
 
 ```shell
-yarn add @wangeditor/plugin-float-image
+yarn add wangeditor-plugin-float-image
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ yarn add @wangeditor/plugin-float-image
 
 ```js
 import { Boot } from '@wangeditor/editor'
-import floatImageModule from '@wangeditor/plugin-float-image'
+import floatImageModule from 'wangeditor-plugin-float-image'
 
 // Register
 // You should register this before create editor, and register only once (not repeatedly).

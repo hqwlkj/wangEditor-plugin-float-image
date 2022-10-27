@@ -6,7 +6,6 @@
 import {h, VNode} from 'snabbdom'
 import {DomEditor, IDomEditor, SlateElement} from '@wangeditor/editor'
 import {ImageElement} from './custom-types'
-import {data} from "autoprefixer";
 
 interface IImageSize {
   width?: string
@@ -25,8 +24,7 @@ function renderContainer(
 ): VNode {
   const {width, height, float} = imageInfo
   const selected = DomEditor.isNodeSelected(editor, elemNode) // 当前节点是否选中
-  console.log('selected', selected)
-  console.log('isDisabled', editor.isDisabled())
+
   const style: any = {}
   if (width) style.width = width
   if (height) style.height = height

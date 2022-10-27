@@ -32,7 +32,7 @@ describe('float-image elem-to-html', () => {
     const html = elemToHtmlConf.elemToHtml(elem, '')
 
     expect(html).toBe(
-      `<img src="${src}" alt="logo" data-href="${href}" style="width:'100'; height:'80'; float:none"/>`
+      `<img src="${src}" alt="logo" data-href="${href}" style="width: 100;height: 80;float: none;"/>`
     )
   })
 })

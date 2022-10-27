@@ -14,6 +14,11 @@
 ```shell
 yarn add wangeditor-plugin-float-image
 ```
+or
+
+```shell
+npm i wangeditor-plugin-float-image
+```
 
 ## Usage
 

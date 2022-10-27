@@ -1,4 +1,4 @@
-# wangEditor 图片浮动 插件
+# [wangEditor](https://www.wangeditor.com/) 图片浮动 插件
 
 [English Documentation](./README-en.md)
 

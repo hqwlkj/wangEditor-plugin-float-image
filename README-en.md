@@ -1,4 +1,4 @@
-# wangEditor float-image plugin
+# [wangEditor](https://www.wangeditor.com/en/) float-image plugin
 
 [中文文档](./README.md)
 

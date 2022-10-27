@@ -3,7 +3,7 @@
  * @author Yanghc
  */
 
-import { $ } from 'dom7'
+import $ from 'dom7'
 import createEditor from '../utils/create-editor'
 import {parseHtmlConf} from '../../src/module/parse-elem-html'
 
@@ -11,8 +11,9 @@ describe('parse elem html', () => {
   const editor = createEditor()
 
   it('parse html', () => {
+    debugger;
     const $img = $(
-      '<img src="hello.png" alt="hello" data-href="http://localhost/" style="width: 10px; height: 5px;"/>'
+      '<img src="hello.png" alt="hello" data-href="http://localhost/" width="10px" height="5px" />'
     )
 
     // match selector
@@ -28,6 +29,7 @@ describe('parse elem html', () => {
       style: {
         width: '10px',
         height: '5px',
+        float: '',
       },
       children: [{ text: '' }],
     })

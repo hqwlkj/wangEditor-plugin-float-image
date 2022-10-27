@@ -6,7 +6,6 @@
 import {h, VNode} from 'snabbdom'
 import {DomEditor, IDomEditor, SlateElement} from '@wangeditor/editor'
 import {ImageElement} from './custom-types'
-import {data} from "autoprefixer";
 
 interface IImageSize {
   width?: string

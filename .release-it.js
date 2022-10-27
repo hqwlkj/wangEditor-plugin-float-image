@@ -3,10 +3,10 @@ module.exports = {
     tagName: "v${version}",
     commitMessage: "release: v${version}",
     requireCleanWorkingDir: false,
-    requireBranch: "main",
+    requireBranch: "master",
   },
   hooks: {
-    "before:init": ["git pull origin main", "npm run test"],
+    "before:init": ["git pull origin master", "npm run test"],
   },
   npm: {
     publish: false,

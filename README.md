@@ -12,7 +12,12 @@
 ## 安装
 
 ```shell
-yarn add @wangeditor/plugin-float-image
+yarn add wangeditor-plugin-float-image
+```
+或者
+
+```shell
+npm i wangeditor-plugin-float-image
 ```
 
 ## 使用

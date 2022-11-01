@@ -13,7 +13,7 @@ import {parseHtmlConf} from './parse-elem-html'
 import {imageFloatLeftMenuConf, imageFloatRightMenuConf, imageFloatNoneMenuConf} from './menu'
 
 const module: Partial<IModuleConf> = {
-  editorPlugin: withImage,
+  // editorPlugin: withImage,
   renderElems: [renderImageConf],
   elemsToHtml: [elemToHtmlConf],
   parseElemsHtml: [parseHtmlConf],

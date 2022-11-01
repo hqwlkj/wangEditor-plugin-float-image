@@ -39,7 +39,7 @@ describe('float-image render-elem', () => {
 
     const containerVnode = renderImageConf.renderElem(elem, null, editor) as any
     expect(containerVnode.sel).toBe('div')
-    expect(containerVnode.data.props.className).toBe('w-e-image-container')
+    expect(containerVnode.data.className).toBe('w-e-image-container')
     expect(containerVnode.data.style.width).toBe('100')
     expect(containerVnode.data.style.height).toBe('80')
     expect(containerVnode.data.style.float).toBe('none')
@@ -47,6 +47,6 @@ describe('float-image render-elem', () => {
     const imageVnode = containerVnode.children[0] as any
     expect(imageVnode.sel).toBe('img')
     expect(imageVnode.data.src).toBe(src)
-    expect(imageVnode.data.dataHref).toBe(href)
+    expect(imageVnode.data['data-href']).toBe(href)
   })
 })

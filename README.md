@@ -59,7 +59,7 @@ const editorConfig: Partial<IEditorConfig> = {
     },
   },
   
-  // 其他...
+  // 其他配置...
 }
 ```
 

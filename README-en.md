@@ -2,6 +2,15 @@
 
 [中文文档](./README.md)
 
+<br/>
+<br/>
+<a href="https://github.com/hqwlkj/wangEditor-plugin-float-image/releases">
+<img src="https://img.shields.io/github/v/release/hqwlkj/wangEditor-plugin-float-image" alt=""/>
+</a>
+<a href="https://www.npmjs.com/package/wangeditor-plugin-float-image">
+<img src="https://img.shields.io/github/downloads/hqwlkj/wangEditor-plugin-float-image/total" alt=""/>
+</a>
+
 ## Introduction
 
 [wangEditor](https://www.wangeditor.com/en/) float-image plugin.

@@ -1,6 +1,6 @@
 {
   "name": "wangeditor-plugin-float-image",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1",
   "description": "wangEditor float-image plugin",
   "repository": {
     "type": "git",

@@ -10,10 +10,16 @@ module.exports = merge(webpackCommonConf, {
   entry: path.join(examplePath, 'index'),
   devServer: {
     port: 3000,
-    progress: true, // 显示打包的进度条
-    contentBase: distPath, // 根目录
+    client: {
+      progress: true, // 显示打包的进度条
+      reconnect: true,
+    },
+    static: distPath, // 根目录
     // open: true,  // 自动打开浏览器
     compress: true, // 启动 gzip 压缩
+  },
+  optimization:{
+    runtimeChunk: 'single',
   },
   devtool: 'eval-cheap-source-map',
   plugins: [

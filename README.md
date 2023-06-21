@@ -2,6 +2,15 @@
 
 [English Documentation](./README-en.md)
 
+<br/>
+<br/>
+<a href="https://github.com/hqwlkj/wangEditor-plugin-float-image/releases">
+<img src="https://img.shields.io/github/v/release/hqwlkj/wangEditor-plugin-float-image" alt=""/>
+</a>
+<a href="https://www.npmjs.com/package/wangeditor-plugin-float-image">
+<img src="https://img.shields.io/github/downloads/hqwlkj/wangEditor-plugin-float-image/total" alt=""/>
+</a>
+
 ## 介绍
 
 [wangEditor](https://www.wangeditor.com/) 图片浮动 插件。

@@ -21,7 +21,8 @@ describe('parse elem html', () => {
 
     // parse
     const res = parseHtmlConf.parseElemHtml($img[0], [], editor)
-    expect(res).toEqual({
+    console.log(res);
+    expect(res)?.toEqual({
       type: 'image',
       src: 'hello.png',
       alt: 'hello',

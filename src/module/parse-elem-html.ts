@@ -3,24 +3,26 @@
  * @author Yanghc
  */
 
-import { DOMElement } from '../utils/dom'
+import $, { DOMElement, getStyleValue } from '../utils/dom'
 import { IDomEditor, SlateDescendant } from '@wangeditor/editor'
 import { ImageElement } from './custom-types'
 
 
 function parseHtml(elem: DOMElement, children: SlateDescendant[], editor: IDomEditor): ImageElement {
-  let href = elem.getAttribute('data-href') || ''
+const $elem = $(elem)
+  let href = $elem.attr('data-href') || ''
+
   href = decodeURIComponent(href) // 兼容 V4
 
   return {
     type: 'image',
-    src: elem.getAttribute('src') || '',
-    alt: elem.getAttribute('alt') || '',
+    src: $elem.attr('src') || '',
+    alt: $elem.attr('alt') || '',
     href,
     style: {
-      width: elem.getAttribute('width') || '',
-      height: elem.getAttribute('height') || '',
-      float: elem.getAttribute('float') || '',
+      width: getStyleValue($elem, 'width'),
+      height: getStyleValue($elem, 'height'),
+      float: getStyleValue($elem, 'float') || '',
     },
     children: [{ text: '' }], // void node 有一个空白 text
   }

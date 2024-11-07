@@ -11,7 +11,7 @@ describe('parse elem html', () => {
   const editor = createEditor()
 
   it('parse html', () => {
-    debugger;
+
     const $img = $(
       '<img src="hello.png" alt="hello" data-href="http://localhost/" style="width: 10px;height: 5px;"/>'
     )

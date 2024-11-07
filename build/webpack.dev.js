@@ -18,7 +18,7 @@ module.exports = merge(webpackCommonConf, {
     // open: true,  // 自动打开浏览器
     compress: true, // 启动 gzip 压缩
   },
-  optimization:{
+  optimization: {
     runtimeChunk: 'single',
   },
   devtool: 'eval-cheap-source-map',

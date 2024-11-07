@@ -3,7 +3,7 @@
  * @author Yanghc
  */
 
-import {Boot, createEditor, createToolbar, IDomEditor, IEditorConfig,} from '@wangeditor/editor'
+import { Boot, createEditor, createToolbar, IDomEditor, IEditorConfig } from '@wangeditor/editor'
 import module from '../src/index'
 
 // 注册
@@ -16,8 +16,8 @@ const editorConfig: Partial<IEditorConfig> = {
   MENU_CONF: {
     uploadImage: {
       fieldName: 'your-fileName',
-      base64LimitSize: 10 * 1024 * 1024 // 10M 以下插入 base64
-    }
+      base64LimitSize: 10 * 1024 * 1024, // 10M 以下插入 base64
+    },
   },
   onChange(editor: IDomEditor) {
     // @ts-ignore
@@ -38,7 +38,7 @@ const editorConfig: Partial<IEditorConfig> = {
         '|',
         'editImage',
         'viewImageLink',
-        'deleteImage'
+        'deleteImage',
       ],
     },
   },

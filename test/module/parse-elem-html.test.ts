@@ -5,13 +5,12 @@
 
 import $ from 'dom7'
 import createEditor from '../utils/create-editor'
-import {parseHtmlConf} from '../../src/module/parse-elem-html'
+import { parseHtmlConf } from '../../src/module/parse-elem-html'
 
 describe('parse elem html', () => {
   const editor = createEditor()
 
   it('parse html', () => {
-
     const $img = $(
       '<img src="hello.png" alt="hello" data-href="http://localhost/" style="width: 10px;height: 5px;"/>'
     )
